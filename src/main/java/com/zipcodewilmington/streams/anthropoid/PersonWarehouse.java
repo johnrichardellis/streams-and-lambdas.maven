@@ -36,7 +36,15 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return list of names of Person objects
      */ // TODO
     public List<String> getNames() {
-        return null;
+
+        List<String> listOfNames = people.stream() // streaming through people list
+                .map(Person::getName)
+                .collect(Collectors.toList());
+
+        return listOfNames;
+
+
+//        return null;
     }
 
 
@@ -44,7 +52,26 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return list of uniquely named Person objects
      */ //TODO
     public Stream<Person> getUniquelyNamedPeople() {
-        return null;
+
+        List<String> listOfUniqueNames = people.stream()
+                .map(Person::getName)
+                .sorted()
+                .distinct()
+                .collect(Collectors.toList());
+
+        List<Person> uniqueNames = new ArrayList<>();
+        people.stream()
+                .forEach(person -> {
+                    if (listOfUniqueNames.contains(person.getName())) {
+                        uniqueNames.add(person);
+                        listOfUniqueNames.remove(person.getName());
+                    }
+                });
+
+        return uniqueNames.stream();
+
+
+//        return null;
     }
 
 
@@ -53,7 +80,17 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return a Stream of respective
      */ //TODO
     public Stream<Person> getUniquelyNamedPeopleStartingWith(Character character) {
-        return null;
+        Stream<Person> newListofPplStartingWithCharacter =
+        getUniquelyNamedPeople().filter(person ->
+            person.getName()
+                    .charAt(0) == character);
+
+        return newListofPplStartingWithCharacter;
+
+
+
+
+//        return null;
     }
 
     /**
@@ -61,7 +98,14 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return a Stream of respective
      */ //TODO
     public Stream<Person> getFirstNUniquelyNamedPeople(int n) {
-        return null;
+
+       // getting ppl up to a certain point
+
+        return getUniquelyNamedPeople().limit(n);
+
+
+
+//        return null;
     }
 
     /**
