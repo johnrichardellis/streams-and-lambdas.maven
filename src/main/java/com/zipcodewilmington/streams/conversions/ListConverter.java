@@ -24,12 +24,14 @@ public final class ListConverter extends PersonConversionAgent<List<Person>> {
 
     @Override
     public List<Person> toList() {
+        // list to list
+
         return super.objectSequence;
     }
 
     //TODO
     public Stream<Person> toStream() {
-
+        // list to stream
         return toList().stream();
 
 //        return null;
@@ -38,6 +40,7 @@ public final class ListConverter extends PersonConversionAgent<List<Person>> {
     //TODO
     public Person[] toArray() {
 
+        // list to array
         return toList().toArray(new Person[0]);
 
 

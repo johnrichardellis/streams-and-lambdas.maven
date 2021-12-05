@@ -47,15 +47,21 @@ public final class PersonFactory {
      * @return - ArrayList of Person objects
      */ // TODO
     public List<Person> createPersonList(int listSize) {
-        // given parameter int listSize
-        // return a List<Person>
+        // given parameter int listSize (size of a list)
+        // return a List<Person> list of type Person
         // create a person List = ArrayList
 
+        // saving this new list to the type we want to return
+        // using a stream to do so
         List<Person> newPerson = Stream
+                // .generate to create persons using createRandomPerson method in THIS class
                 .generate(this::createRandomPerson)
+                // setting the size limit using the parameter we are given
                 .limit(listSize)
+                // .collect to collect these objects in a list using .toList
                 .collect(Collectors.toList());
 
+        // return the created list
         return newPerson;
 
 
@@ -69,8 +75,13 @@ public final class PersonFactory {
      */ // TODO
     public Person[] createPersonArray(int arrayLength) {
 
-        Person[] newPerson = Stream.generate(this::createRandomPerson)
+        // same idea as above but given length of array and want to return an array
+        Person[] newPerson = Stream
+                // .generate to create persons
+                .generate(this::createRandomPerson)
+                // defining the size of the array using parameter
                 .limit(arrayLength)
+                // setting this equal to an array of Person[] type
                 .toArray(Person[]::new);
 
                 return newPerson;
@@ -89,8 +100,11 @@ public final class PersonFactory {
      */ // TODO
     public Stream<Person> createPersonStream(int streamCount) {
 
+        // creating Person objects and placing in a stream
         Stream<Person> newPerson = Stream
+                //generating objects
                 .generate(this::createRandomPerson)
+                // defining size of stream
                 .limit(streamCount);
 
 

@@ -29,9 +29,11 @@ public final class ArrayConverter extends PersonConversionAgent<Person[]> {
 
     //TODO
     public List<Person> toList() {
+        // array to list
         // super is reference to any classes above this one
         // this class passes objectSequence from our super class
-        //to return the array as a list
+        // to return the array as a list
+
        return  Arrays.asList(super.objectSequence);
 
 //        return null;
@@ -39,9 +41,9 @@ public final class ArrayConverter extends PersonConversionAgent<Person[]> {
 
     //TODO
     public Stream<Person> toStream() {
-
+        // array to stream
         // taking the above method and calling it
-        // converting the above list to a stream
+        // converting the above list to a stream using .stream
         return toList().stream();
 
 
@@ -51,7 +53,7 @@ public final class ArrayConverter extends PersonConversionAgent<Person[]> {
     @Override
     public Person[] toArray() {
 
-
+        // array to array
         return super.objectSequence;
     }
 }

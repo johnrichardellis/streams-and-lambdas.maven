@@ -3,6 +3,7 @@ package com.zipcodewilmington.streams.conversions;
 import com.zipcodewilmington.streams.anthropoid.Person;
 import com.zipcodewilmington.streams.anthropoid.PersonFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
  */
 public final class StreamConverter extends PersonConversionAgent<Stream<Person>> {
     private final List<Person> personList;
+
     public StreamConverter(Stream<Person> people) {
         super(people);
         this.personList = super.objectSequence.collect(Collectors.toList());
@@ -25,16 +27,31 @@ public final class StreamConverter extends PersonConversionAgent<Stream<Person>>
 
     // TODO
     public List<Person> toList() {
-        return null;
+        //stream to list
+
+        return personList;
+        // personList is variable declared above
+
+//        return null;
     }
 
     // TODO
     public Stream<Person> toStream() {
-        return null;
+
+        // stream to stream
+        // using above instance field to convert to stream
+        return personList.stream();
+
+//        return null;
     }
 
     // TODO
     public Person[] toArray() {
-        return null;
+
+        // stream to array, type Person, length 0 (this is a general way to do it)
+        return personList.toArray(new Person[0]);
+
+
+//        return null;
     }
 }
