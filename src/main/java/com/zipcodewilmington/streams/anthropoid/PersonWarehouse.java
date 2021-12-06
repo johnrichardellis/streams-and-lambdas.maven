@@ -34,13 +34,34 @@ public final class PersonWarehouse implements Iterable<Person> {
      */ // TODO
     public List<String> getNames() {
 
-        List<String> listOfNames = people.stream() // streaming through people list (instance field above)
-                // creating map of Person names
-                .map(Person::getName) // where is getName coming from?
-                // collecting as a list
+        List<String> listOfNames =
+        people.stream()
+                .map(Person::getName)
                 .collect(Collectors.toList());
 
         return listOfNames;
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//             // streaming through people list (instance field above)
+//        List<String> listOfNames = people.stream()
+//                // creating map of Person names
+//                .map(Person::getName)
+//                // where is getName coming from?
+//                // collecting as a list
+//                .collect(Collectors.toList());
+//
+//        return listOfNames;
 
 
 //        return null;

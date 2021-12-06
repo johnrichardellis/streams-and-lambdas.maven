@@ -53,7 +53,7 @@ public final class PersonFactory {
 
         // saving this new list to the type we want to return
         // using a stream to do so
-        List<Person> newPerson = Stream
+        List<Person> newPeople = Stream
                 // .generate to create persons using createRandomPerson method in THIS class
                 .generate(this::createRandomPerson)
                 // setting the size limit using the parameter we are given
@@ -62,7 +62,7 @@ public final class PersonFactory {
                 .collect(Collectors.toList());
 
         // return the created list
-        return newPerson;
+        return newPeople;
 
 
 //        return null;
@@ -76,7 +76,7 @@ public final class PersonFactory {
     public Person[] createPersonArray(int arrayLength) {
 
         // same idea as above but given length of array and want to return an array
-        Person[] newPerson = Stream
+        Person[] newPeople = Stream
                 // .generate to create persons
                 .generate(this::createRandomPerson)
                 // defining the size of the array using parameter
@@ -84,7 +84,7 @@ public final class PersonFactory {
                 // setting this equal to an array of Person[] type
                 .toArray(Person[]::new);
 
-                return newPerson;
+                return newPeople;
 
 
 
@@ -101,14 +101,16 @@ public final class PersonFactory {
     public Stream<Person> createPersonStream(int streamCount) {
 
         // creating Person objects and placing in a stream
-        Stream<Person> newPerson = Stream
+        Stream<Person> newPeople = Stream
                 //generating objects
                 .generate(this::createRandomPerson)
                 // defining size of stream
                 .limit(streamCount);
+        // do not need to convert to a different type here because we already have a stream
+        // and that is what we want to returnSteam<Person>
 
 
-        return newPerson;
+        return newPeople;
 
 
 
